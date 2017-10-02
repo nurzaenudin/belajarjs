@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Purchasedetail;
 
 class PurchasedetailController extends Controller
 {
@@ -36,9 +37,11 @@ class PurchasedetailController extends Controller
     public function store(Request $request)
     {
         $purchasedetail= new Purchasedetail([
-		
-		
-		])
+			'pembeli'=>$request->get('pembeli'),
+			'item_id'=>$request->get('item_id')
+		]);
+		$purchasedetail->save();
+		return response()->json('Successfully added');
     }
 
     /**
@@ -60,7 +63,8 @@ class PurchasedetailController extends Controller
      */
     public function edit($id)
     {
-        //
+        $purchasedetail=Purchasedetail::find($id);
+		return response()->json($purchasedetail);
     }
 
     /**
@@ -72,8 +76,14 @@ class PurchasedetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $purchasedetail=Purchasedetail::find($id);
+		$purchasedetail->pembeli=$request->get('pembeli');
+		$purchasedetail->item_id=$request->get('item_id');
+		$purchasedetail->save();
+		
+		return response()->json('Successfully Update');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -83,6 +93,9 @@ class PurchasedetailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $purchasedetail=Purchasedetail::find($id);
+		$purchasedetail->delete();
+		
+		return response()->json('Successfully Deleted');
     }
 }

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchasedetail extends Model
 {
-    public function items()
+    protected $fillable=['pembeli', 'item_id'];
+	
+	public function items()
 	{
 		return $this->hasMany('App\item');
 	}

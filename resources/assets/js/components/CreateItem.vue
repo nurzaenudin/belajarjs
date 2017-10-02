@@ -33,8 +33,8 @@
     },
     methods: {
       addItem(){
-        let uri = 'http://004.belajar.dev/items';
-        this.axios.post(uri, this.item).then((response) => {
+		   
+        this.axios.post("/items", this.item).then((response) => {
           this.$router.push({name: 'DisplayItem'})
         })
     }

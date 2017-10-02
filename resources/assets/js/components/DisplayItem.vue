@@ -51,7 +51,7 @@
         methods: {
             fetchItems()
             {
-              let uri = 'http://004.belajar.dev/items';
+              let uri = '/items';
               this.axios.get(uri).then((response) => {
                   this.items = response.data;
 				    
@@ -60,7 +60,7 @@
             },
             deleteItem(id, index)
             {			
-              let uri = `http://004.belajar.dev/items/${id}`;
+              let uri = `/items/${id}`;
               this.items.splice(index, 1);
               this.axios.delete(uri);
 			  

@@ -16,4 +16,9 @@ Route::get('/', function () {
 });
 
 Route::resource('items', 'ItemController');
-Route::resource('purchasedetails', 'PurchaseController');
+Route::resource('purchasedetails', 'PurchasedetailController');
+
+
+Route::get('/purchasedetailsview', function () {
+    return view('purchasedetailsview');
+});

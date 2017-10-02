@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable=['name', 'price'];
+	
+	public function purchasedetail()
+	{
+		return $this->belongsTo('App\purchasedetail');
+	}
 }

@@ -843,7 +843,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(9);
-module.exports = __webpack_require__(54);
+module.exports = __webpack_require__(63);
 
 
 /***/ }),
@@ -869,6 +869,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue__);
 
 
 
@@ -884,22 +890,38 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_
 
 
 
+
+
+
+
 var routes = [{
-						name: 'Example',
-						path: '/example',
-						component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
+	name: 'Example',
+	path: '/example',
+	component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
 }, {
-						name: 'CreateItem',
-						path: '/items/create',
-						component: __WEBPACK_IMPORTED_MODULE_6__components_CreateItem_vue___default.a
+	name: 'CreateItem',
+	path: '/items/create',
+	component: __WEBPACK_IMPORTED_MODULE_6__components_CreateItem_vue___default.a
 }, {
-						name: 'DisplayItem',
-						path: '/',
-						component: __WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue___default.a
+	name: 'DisplayItem',
+	path: '/',
+	component: __WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue___default.a
 }, {
-						name: 'EditItem',
-						path: '/edit/:id',
-						component: __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue___default.a
+	name: 'EditItem',
+	path: '/edit/:id',
+	component: __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue___default.a
+}, {
+	name: 'CreatePurchasedetail',
+	path: '/purchasedetails/create',
+	component: __WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue___default.a
+}, {
+	name: 'DisplayPurchasedetail',
+	path: '/purchasedetailsview',
+	component: __WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue___default.a
+}, {
+	name: 'EditPurchasedetail',
+	path: '/edit/:id',
+	component: __WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue___default.a
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ mode: 'history', routes: routes });
@@ -15405,8 +15427,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     addItem: function addItem() {
       var _this = this;
 
-      var uri = 'http://004.belajar.dev/items';
-      this.axios.post(uri, this.item).then(function (response) {
+      this.axios.post("/items", this.item).then(function (response) {
         _this.$router.push({ name: 'DisplayItem' });
       });
     }
@@ -15626,13 +15647,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fetchItems: function fetchItems() {
             var _this = this;
 
-            var uri = 'http://004.belajar.dev/items';
+            var uri = '/items';
             this.axios.get(uri).then(function (response) {
                 _this.items = response.data;
             });
         },
         deleteItem: function deleteItem(id, index) {
-            var uri = 'http://004.belajar.dev/items/' + id;
+            var uri = '/items/' + id;
             this.items.splice(index, 1);
             this.axios.delete(uri);
         }
@@ -15852,7 +15873,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getItem: function getItem() {
             var _this = this;
 
-            var uri = 'http://004.belajar.dev/items/' + this.$route.params.id + '/edit';
+            var uri = '/items/' + this.$route.params.id + '/edit';
             this.axios.get(uri).then(function (response) {
                 _this.item = response.data;
             });
@@ -15860,7 +15881,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         updateItem: function updateItem() {
             var _this2 = this;
 
-            var uri = 'http://004.belajar.dev/items/' + this.$route.params.id;
+            var uri = '/items/' + this.$route.params.id;
             this.axios.patch(uri, this.item).then(function (response) {
                 _this2.$router.push({ name: 'DisplayItem' });
             });
@@ -15990,6 +16011,677 @@ if (false) {
 
 /***/ }),
 /* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(55)
+/* template */
+var __vue_template__ = __webpack_require__(56)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/CreatePurchasedetail.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CreatePurchasedetail.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-263baeec", Component.options)
+  } else {
+    hotAPI.reload("data-v-263baeec", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      purchasedetail: {}
+    };
+  },
+
+  methods: {
+    addPurchasedetail: function addPurchasedetail() {
+      var _this = this;
+
+      var uri = '/purchasedetails';
+      this.axios.post(uri, this.purchasedetail).then(function (response) {
+        _this.$router.push({ name: 'DisplayPurchasedetail' });
+      });
+    }
+  }
+});
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("Create An Purchasedetail")]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            _vm.addPurchasedetail($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Pembeli:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.purchasedetail.pembeli,
+                    expression: "purchasedetail.pembeli"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.purchasedetail.pembeli },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.purchasedetail.pembeli = $event.target.value
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Item ID:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.purchasedetail.item_id,
+                    expression: "purchasedetail.item_id"
+                  }
+                ],
+                staticClass: "form-control col-md-6",
+                attrs: { type: "text" },
+                domProps: { value: _vm.purchasedetail.item_id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.purchasedetail.item_id = $event.target.value
+                  }
+                }
+              })
+            ])
+          ])
+        ]),
+        _c("br"),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _vm._v("Add Purchasedetail")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-263baeec", module.exports)
+  }
+}
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(58)
+/* template */
+var __vue_template__ = __webpack_require__(59)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/DisplayPurchasedetail.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] DisplayPurchasedetail.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-050fc2c8", Component.options)
+  } else {
+    hotAPI.reload("data-v-050fc2c8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            purchasedetails: []
+        };
+    },
+
+
+    created: function created() {
+        this.fetchPurchasedetails();
+    },
+
+    methods: {
+        fetchPurchasedetails: function fetchPurchasedetails() {
+            var _this = this;
+
+            var uri = '/purchasedetails';
+            this.axios.get(uri).then(function (response) {
+                _this.purchasedetails = response.data;
+            });
+        },
+        deletePurchasedetail: function deletePurchasedetail(id, index) {
+            var uri = '/purchasedetails/' + id;
+            this.purchasedetails.splice(index, 1);
+            this.axios.delete(uri);
+        }
+    }
+});
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._v("\n\t\tUDIN\n        "),
+    _c("h1", [_vm._v("Purchasedetails")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-10" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-2" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { to: { name: "CreatePurchasedetail" } }
+            },
+            [_vm._v("Create Purchasedetail")]
+          )
+        ],
+        1
+      )
+    ]),
+    _c("br"),
+    _vm._v(" "),
+    _c("table", { staticClass: "table table-hover" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.purchasedetails, function(purchasedetail, index) {
+          return _c("tr", [
+            _c("td", [_vm._v(_vm._s(purchasedetail.id))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(purchasedetail.pembeli))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(purchasedetail.item_id))]),
+            _vm._v(" "),
+            _c(
+              "td",
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: {
+                      to: {
+                        name: "EditPurchasedetail",
+                        params: { id: purchasedetail.id }
+                      }
+                    }
+                  },
+                  [_vm._v("Edit")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("td", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-danger",
+                  on: {
+                    click: function($event) {
+                      _vm.deletePurchasedetail(purchasedetail.id, index)
+                    }
+                  }
+                },
+                [_vm._v("Delete")]
+              )
+            ])
+          ])
+        })
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("td", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Pembeli")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Item_ID")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Actions")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-050fc2c8", module.exports)
+  }
+}
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(61)
+/* template */
+var __vue_template__ = __webpack_require__(62)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/EditPurchasedetail.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] EditPurchasedetail.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5bf161d0", Component.options)
+  } else {
+    hotAPI.reload("data-v-5bf161d0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            purchasedetail: {}
+        };
+    },
+
+
+    created: function created() {
+        this.getPurchasedetail();
+    },
+
+    methods: {
+        getPurchasedetail: function getPurchasedetail() {
+            var _this = this;
+
+            var uri = '/purchasedetails/' + this.$route.params.id + '/edit';
+            this.axios.get(uri).then(function (response) {
+                _this.purchasedetail = response.data;
+            });
+        },
+        updatePurchasedetail: function updatePurchasedetail() {
+            var _this2 = this;
+
+            var uri = '/purchasedetails/' + this.$route.params.id;
+            this.axios.patch(uri, this.purchasedetail).then(function (response) {
+                _this2.$router.push({ name: 'DisplayPurchasedetail' });
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("h1", [_vm._v("Update Purchasedetail")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-md-10" }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-md-2" },
+        [
+          _c(
+            "router-link",
+            {
+              staticClass: "btn btn-success",
+              attrs: { to: { name: "DisplayPurchasedetail" } }
+            },
+            [_vm._v("Return to Purchasedetails")]
+          )
+        ],
+        1
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            _vm.updatePurchasedetail($event)
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", [_vm._v("Pembeli")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.purchasedetail.pembeli,
+                expression: "purchasedetail.pembeli"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.purchasedetail.pembeli },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.purchasedetail.pembeli = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { name: "product_price" } }, [
+            _vm._v("Item ID")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.purchasedetail.item_id,
+                expression: "purchasedetail.item_id"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "text" },
+            domProps: { value: _vm.purchasedetail.item_id },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.purchasedetail.item_id = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group" }, [
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Update")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5bf161d0", module.exports)
+  }
+}
+
+/***/ }),
+/* 63 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
