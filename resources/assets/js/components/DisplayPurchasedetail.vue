@@ -17,6 +17,7 @@
                 <td>ID</td>
                 <td>Pembeli</td>
                 <td>Item_ID</td>
+				<td>Item Name</td>
 				<td>Actions</td>
             </tr>
             </thead>
@@ -26,6 +27,7 @@
                     <td>{{ purchasedetail.id }}</td>
                     <td>{{ purchasedetail.pembeli }}</td>
                     <td>{{ purchasedetail.item_id }}</td>
+					<td>{{ purchasedetail.item.name }}</td>
 					<td><router-link :to="{name: 'EditPurchasedetail', params: { id: purchasedetail.id }}" class="btn btn-primary">Edit</router-link></td>
                     <td><button class="btn btn-danger" v-on:click="deletePurchasedetail(purchasedetail.id, index)">Delete</button></td>
 					</tr>

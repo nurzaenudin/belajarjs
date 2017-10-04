@@ -16087,24 +16087,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      purchasedetail: {}
-    };
-  },
+    data: function data() {
+        return {
+            purchasedetail: {},
+            items: {}
+        };
+    },
 
-  methods: {
-    addPurchasedetail: function addPurchasedetail() {
-      var _this = this;
 
-      var uri = '/purchasedetails';
-      this.axios.post(uri, this.purchasedetail).then(function (response) {
-        _this.$router.push({ name: 'DisplayPurchasedetail' });
-      });
+    created: function created() {
+        this.fetchItems();
+    },
+
+    methods: {
+        fetchItems: function fetchItems() {
+            var _this = this;
+
+            var uri = '/items';
+            this.axios.get(uri).then(function (response) {
+                _this.items = response.data;
+            });
+        },
+        addPurchasedetail: function addPurchasedetail() {
+            var _this2 = this;
+
+            var uri = '/purchasedetails';
+            this.axios.post(uri, this.purchasedetail).then(function (response) {
+                _this2.$router.push({ name: 'DisplayPurchasedetail' });
+            });
+        }
     }
-  }
 });
 
 /***/ }),
@@ -16164,27 +16182,46 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Item ID:")]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.purchasedetail.item_id,
-                    expression: "purchasedetail.item_id"
-                  }
-                ],
-                staticClass: "form-control col-md-6",
-                attrs: { type: "text" },
-                domProps: { value: _vm.purchasedetail.item_id },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.purchasedetail.item_id,
+                      expression: "purchasedetail.item_id"
                     }
-                    _vm.purchasedetail.item_id = $event.target.value
+                  ],
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.purchasedetail.item_id = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
                   }
-                }
-              })
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Please select one")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.items, function(item) {
+                    return _c("option", { domProps: { value: item.id } }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  })
+                ],
+                2
+              )
             ])
           ])
         ]),
@@ -16304,6 +16341,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -16381,6 +16420,8 @@ var render = function() {
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(purchasedetail.item_id))]),
             _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(purchasedetail.item.name))]),
+            _vm._v(" "),
             _c(
               "td",
               [
@@ -16433,6 +16474,8 @@ var staticRenderFns = [
         _c("td", [_vm._v("Pembeli")]),
         _vm._v(" "),
         _c("td", [_vm._v("Item_ID")]),
+        _vm._v(" "),
+        _c("td", [_vm._v("Item Name")]),
         _vm._v(" "),
         _c("td", [_vm._v("Actions")])
       ])
@@ -16526,35 +16569,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            purchasedetail: {}
+            purchasedetail: {},
+            items: {}
         };
     },
 
 
     created: function created() {
         this.getPurchasedetail();
+        this.fetchItems();
     },
 
     methods: {
-        getPurchasedetail: function getPurchasedetail() {
+        fetchItems: function fetchItems() {
             var _this = this;
+
+            var uri = '/items';
+            this.axios.get(uri).then(function (response) {
+                _this.items = response.data;
+            });
+        },
+        getPurchasedetail: function getPurchasedetail() {
+            var _this2 = this;
 
             var uri = '/purchasedetails/' + this.$route.params.id + '/edit';
             this.axios.get(uri).then(function (response) {
-                _this.purchasedetail = response.data;
+                _this2.purchasedetail = response.data;
             });
         },
         updatePurchasedetail: function updatePurchasedetail() {
-            var _this2 = this;
+            var _this3 = this;
 
             var uri = '/purchasedetails/' + this.$route.params.id;
             this.axios.patch(uri, this.purchasedetail).then(function (response) {
-                _this2.$router.push({ name: 'DisplayPurchasedetail' });
+                _this3.$router.push({ name: 'DisplayPurchasedetail' });
             });
         }
     }
@@ -16633,27 +16690,48 @@ var render = function() {
             _vm._v("Item ID")
           ]),
           _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.purchasedetail.item_id,
-                expression: "purchasedetail.item_id"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "text" },
-            domProps: { value: _vm.purchasedetail.item_id },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
+          _c("label", [_vm._v("Item ID:")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.purchasedetail.item_id,
+                  expression: "purchasedetail.item_id"
                 }
-                _vm.purchasedetail.item_id = $event.target.value
+              ],
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.purchasedetail.item_id = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
               }
-            }
-          })
+            },
+            [
+              _c("option", { attrs: { disabled: "", value: "" } }, [
+                _vm._v("Please select one")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.items, function(item) {
+                return _c("option", { domProps: { value: item.id } }, [
+                  _vm._v(_vm._s(item.name))
+                ])
+              })
+            ],
+            2
+          )
         ]),
         _vm._v(" "),
         _vm._m(0)

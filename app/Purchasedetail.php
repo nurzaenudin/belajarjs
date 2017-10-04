@@ -8,9 +8,9 @@ class Purchasedetail extends Model
 {
     protected $fillable=['pembeli', 'item_id'];
 	
-	public function items()
+	public function item()
 	{
-		return $this->hasMany('App\item');
+		return $this->belongsTo('App\Item');
 	}
 	
 }

@@ -14,7 +14,11 @@
 
             <div class="form-group">
                 <label name="product_price">Item ID</label>
-                <input type="text" class="form-control" v-model="purchasedetail.item_id">
+              <label>Item ID:</label>
+              <select v-model="purchasedetail.item_id">
+				<option disabled value="">Please select one</option>
+				<option v-for="item in items" v-bind:value="item.id">{{item.name}}</option>
+			</select>
             </div>
 
             <div class="form-group">
@@ -29,16 +33,28 @@
     export default{
         data(){
             return{
-                purchasedetail:{}
+                purchasedetail:{},
+				items:{}
             }
         },
 
         created: function(){
             this.getPurchasedetail();
+			this.fetchItems();
         },
 
         methods: {
-            getPurchasedetail()
+            
+			fetchItems(){
+              let uri = '/items';
+              this.axios.get(uri).then((response) => {
+                  this.items = response.data;
+				    
+              });
+			  
+			},
+			
+			getPurchasedetail()
             {
               let uri = `/purchasedetails/${this.$route.params.id}/edit`;
                 this.axios.get(uri).then((response) => {

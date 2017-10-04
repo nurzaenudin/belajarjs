@@ -14,7 +14,7 @@ class PurchasedetailController extends Controller
      */
     public function index()
     {
-        $purchasedetails=Purchasedetail::all();
+        $purchasedetails=Purchasedetail::with('item')->get();
 		return response()->json($purchasedetails);
     }
 

@@ -8,8 +8,8 @@ class Item extends Model
 {
     protected $fillable=['name', 'price'];
 	
-	public function purchasedetail()
+	public function purchasedetails()
 	{
-		return $this->belongsTo('App\purchasedetail');
+		return $this->hasMany('App\Purchasedetail');
 	}
 }
