@@ -13,15 +13,15 @@ class PurchasesSeeder extends Seeder
     public function run()
     {
         $purchase= new Purchase();
-		$purchase->nama='udin';
+		$purchase->name='udin';
 		$purchase->save();
 		
 		$purchase= new Purchase();
-		$purchase->nama='caca';
+		$purchase->name='caca';
 		$purchase->save();
 		
 		$purchase= new Purchase();
-		$purchase->nama='auf';
+		$purchase->name='auf';
 		$purchase->save();
     }
 }
