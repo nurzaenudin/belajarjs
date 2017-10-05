@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::resource('items', 'ItemController');
 Route::resource('purchasedetails', 'PurchasedetailController');
+Route::resource('purchases', 'PurchasesController');
 
 
 Route::get('/purchasedetailsview', function () {
