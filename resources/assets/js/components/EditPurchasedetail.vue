@@ -8,8 +8,8 @@
 
         <form v-on:submit.prevent="updatePurchasedetail">
             <div class="form-group">
-                <label>Pembeli</label>
-                <input type="text" class="form-control" v-model="purchasedetail.pembeli">
+                <label>Purchase ID</label>
+                <input type="text" class="form-control" v-model="purchasedetail.purchase_id">
             </div>
 
             <div class="form-group">

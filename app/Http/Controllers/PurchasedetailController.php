@@ -37,7 +37,7 @@ class PurchasedetailController extends Controller
     public function store(Request $request)
     {
         $purchasedetail= new Purchasedetail([
-			'pembeli'=>$request->get('pembeli'),
+			'purchase_id'=>$request->get('purchase_id'),
 			'item_id'=>$request->get('item_id')
 		]);
 		$purchasedetail->save();
@@ -77,7 +77,7 @@ class PurchasedetailController extends Controller
     public function update(Request $request, $id)
     {
         $purchasedetail=Purchasedetail::find($id);
-		$purchasedetail->pembeli=$request->get('pembeli');
+		$purchasedetail->purchase_id=$request->get('purchase_id');
 		$purchasedetail->item_id=$request->get('item_id');
 		$purchasedetail->save();
 		

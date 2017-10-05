@@ -15,7 +15,7 @@
             <thead>
             <tr>
                 <td>ID</td>
-                <td>Pembeli</td>
+                <td>Purchade ID</td>
                 <td>Item_ID</td>
 				<td>Item Name</td>
 				<td>Actions</td>
@@ -25,7 +25,7 @@
             <tbody>
                 <tr v-for="(purchasedetail, index) in purchasedetails">
                     <td>{{ purchasedetail.id }}</td>
-                    <td>{{ purchasedetail.pembeli }}</td>
+                    <td>{{ purchasedetail.purchase_id }}</td>
                     <td>{{ purchasedetail.item_id }}</td>
 					<td>{{ purchasedetail.item.name }}</td>
 					<td><router-link :to="{name: 'EditPurchasedetail', params: { id: purchasedetail.id }}" class="btn btn-primary">Edit</router-link></td>

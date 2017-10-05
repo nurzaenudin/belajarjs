@@ -16150,26 +16150,26 @@ var render = function() {
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-md-6" }, [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Pembeli:")]),
+              _c("label", [_vm._v("Purchase ID:")]),
               _vm._v(" "),
               _c("input", {
                 directives: [
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.purchasedetail.pembeli,
-                    expression: "purchasedetail.pembeli"
+                    value: _vm.purchasedetail.purchase_id,
+                    expression: "purchasedetail.purchase_id"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.purchasedetail.pembeli },
+                domProps: { value: _vm.purchasedetail.purchase_id },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.purchasedetail.pembeli = $event.target.value
+                    _vm.purchasedetail.purchase_id = $event.target.value
                   }
                 }
               })
@@ -16416,7 +16416,7 @@ var render = function() {
           return _c("tr", [
             _c("td", [_vm._v(_vm._s(purchasedetail.id))]),
             _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(purchasedetail.pembeli))]),
+            _c("td", [_vm._v(_vm._s(purchasedetail.purchase_id))]),
             _vm._v(" "),
             _c("td", [_vm._v(_vm._s(purchasedetail.item_id))]),
             _vm._v(" "),
@@ -16471,7 +16471,7 @@ var staticRenderFns = [
       _c("tr", [
         _c("td", [_vm._v("ID")]),
         _vm._v(" "),
-        _c("td", [_vm._v("Pembeli")]),
+        _c("td", [_vm._v("Purchade ID")]),
         _vm._v(" "),
         _c("td", [_vm._v("Item_ID")]),
         _vm._v(" "),
@@ -16660,26 +16660,26 @@ var render = function() {
       },
       [
         _c("div", { staticClass: "form-group" }, [
-          _c("label", [_vm._v("Pembeli")]),
+          _c("label", [_vm._v("Purchase ID")]),
           _vm._v(" "),
           _c("input", {
             directives: [
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.purchasedetail.pembeli,
-                expression: "purchasedetail.pembeli"
+                value: _vm.purchasedetail.purchase_id,
+                expression: "purchasedetail.purchase_id"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "text" },
-            domProps: { value: _vm.purchasedetail.pembeli },
+            domProps: { value: _vm.purchasedetail.purchase_id },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.purchasedetail.pembeli = $event.target.value
+                _vm.purchasedetail.purchase_id = $event.target.value
               }
             }
           })

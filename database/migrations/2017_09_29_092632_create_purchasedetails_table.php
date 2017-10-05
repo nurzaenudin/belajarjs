@@ -15,13 +15,14 @@ class CreatePurchasedetailsTable extends Migration
     {
         Schema::create('purchasedetails', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('pembeli');
+			$table->integer('purchase_id')->unsigned();
 			$table->integer('item_id')->unsigned();
 			
 			
             $table->timestamps();
 			
 			$table->foreign('item_id')->references('id')->on('items')->onUpdate('cascade')->onDelete('cascade');
+			$table->foreign('purchase_id')->references('id')->on('purchases')->onUpdate('cascade')->onDelete('cascade');
 			
 			
         });
