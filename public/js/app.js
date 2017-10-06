@@ -895,37 +895,43 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_
 
 
 var routes = [{
-	name: 'Example',
-	path: '/example',
-	component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
+  name: 'Example',
+  path: '/example',
+  component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
 }, {
-	name: 'CreateItem',
-	path: '/items/create',
-	component: __WEBPACK_IMPORTED_MODULE_6__components_CreateItem_vue___default.a
+  name: 'CreateItem',
+  path: '/items/create',
+  component: __WEBPACK_IMPORTED_MODULE_6__components_CreateItem_vue___default.a
 }, {
-	name: 'DisplayItem',
-	path: '/',
-	component: __WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue___default.a
+  name: 'DisplayItem',
+  path: '/',
+  component: __WEBPACK_IMPORTED_MODULE_7__components_DisplayItem_vue___default.a
 }, {
-	name: 'EditItem',
-	path: '/edit/:id',
-	component: __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue___default.a
+  name: 'EditItem',
+  path: '/edit/:id',
+  component: __WEBPACK_IMPORTED_MODULE_8__components_EditItem_vue___default.a
 }, {
-	name: 'CreatePurchasedetail',
-	path: '/purchasedetails/create',
-	component: __WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue___default.a
+  name: 'CreatePurchasedetail',
+  path: '/purchasedetails/create',
+  component: __WEBPACK_IMPORTED_MODULE_9__components_CreatePurchasedetail_vue___default.a
 }, {
-	name: 'DisplayPurchasedetail',
-	path: '/purchasedetailsview',
-	component: __WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue___default.a
+  name: 'DisplayPurchasedetail',
+  path: '/purchasedetailsview',
+  component: __WEBPACK_IMPORTED_MODULE_10__components_DisplayPurchasedetail_vue___default.a
 }, {
-	name: 'EditPurchasedetail',
-	path: '/edit/:id',
-	component: __WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue___default.a
+  name: 'EditPurchasedetail',
+  path: '/edit/:id',
+  component: __WEBPACK_IMPORTED_MODULE_11__components_EditPurchasedetail_vue___default.a
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ mode: 'history', routes: routes });
 new __WEBPACK_IMPORTED_MODULE_0_vue___default.a(__WEBPACK_IMPORTED_MODULE_0_vue___default.a.util.extend({ router: router }, __WEBPACK_IMPORTED_MODULE_4__App_vue___default.a)).$mount('#app');
+
+/* const router = new VueRouter({ routes });
+
+const app = new Vue({
+  router
+}).$mount('#app'); */
 
 /***/ }),
 /* 10 */

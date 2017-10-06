@@ -36,7 +36,11 @@ class PurchasesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $purchase= new purchase([
+			'name'=>$request->get('name'),
+		]);
+		$purchase->save();
+		return response()->json('Successfully added');
     }
 
     /**
