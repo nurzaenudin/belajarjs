@@ -11,6 +11,7 @@ Vue.use(VueAxios, axios);
 
 import App from './App.vue';
 import Example from './components/Example.vue';
+import Items from './components/Items.vue';
 import CreateItem from './components/CreateItem.vue';
 import DisplayItem from './components/DisplayItem.vue';
 import EditItem from './components/EditItem.vue';
@@ -25,6 +26,16 @@ import EditPurchasedetail from './components/EditPurchasedetail.vue';
 
 const routes = [
   {
+		name: 'home',
+		path: '/',
+        components: {
+			DisplayItem:DisplayItem,
+			CreateItem:DisplayPurchasedetail
+			}
+  },  
+  
+  
+  {
 		name: 'Example',
 		path: '/example',
 		component: Example
@@ -36,7 +47,7 @@ const routes = [
   },
   {
 		name: 'DisplayItem',
-		path: '/',
+		path: '/DisplayItem',
         component: DisplayItem
   },
   {
@@ -66,13 +77,15 @@ const routes = [
 ];
 
 
-const router = new VueRouter({ mode: 'history', routes: routes});
-new Vue(Vue.util.extend({ router }, App)).$mount('#app');
+/* const router = new VueRouter({ mode: 'history', routes: routes});
+new Vue(Vue.util.extend({ router }, App)).$mount('#app'); */
 
-/* const router = new VueRouter({ routes });
+const router = new VueRouter({ routes });
 
 const app = new Vue({
+  components: { CreateItem, DisplayPurchasedetail },
+  
   router
-}).$mount('#app'); */
+}).$mount('#app');
 
 

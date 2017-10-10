@@ -8,18 +8,21 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <p>
-		udin latihan crud laravel
-		<div id="app">
-		
-					<transition>
-            <router-view></router-view>
-				</transition>
+        <div id="app">
+			<transition>
+				<router-view></router-view>
+				<router-view name="CreateItem"></router-view>
+			</transition>
+			
+			
+
         </div>
          <script>
            window.Laravel = <?php echo json_encode([
                'csrfToken' => csrf_token(),
                     ]); ?>
+					
+			
           </script>
         <script src="{{asset('js/app.js')}}"></script>
     </body>

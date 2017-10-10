@@ -1,9 +1,8 @@
 <template>
     <div class="container">
+		 <router-link to="/Items" class="btn btn-primary">Display Item</router-link>
         <div>
-			<transition name="fade">
-                <router-view></router-view>
-            </transition>
+			<router-view></router-view>
         </div>
     </div>
 </template>

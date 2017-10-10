@@ -23,3 +23,7 @@ Route::resource('purchases', 'PurchasesController');
 Route::get('/purchasedetailsview', function () {
     return view('purchasedetailsview');
 });
+
+Route::get('/purchasesview', function () {
+    return view('purchasesview');
+});
