@@ -12,6 +12,7 @@
 		
 		<div id="app">
 			<router-link :to="{ name: 'DisplayItem' }" class="btn btn-primary">Display Item</router-link>
+			<router-link :to="{ name: 'Purchases' }" class="btn btn-primary">Create Purchase</router-link>
 			<transition name="fade">
                 <router-view></router-view>
             </transition>
