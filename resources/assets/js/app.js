@@ -20,18 +20,18 @@ import CreatePurchasedetail from './components/CreatePurchasedetail.vue';
 import DisplayPurchasedetail from './components/DisplayPurchasedetail.vue';
 import EditPurchasedetail from './components/EditPurchasedetail.vue';
 
+import CreatePurchase from './components/CreatePurchase.vue';
+import Purchases from './components/Purchases.vue';
+
 
 
 
 
 const routes = [
   {
-		name: 'home',
+		name: '/',
 		path: '/',
-        components: {
-			DisplayItem:DisplayItem,
-			CreateItem:DisplayPurchasedetail
-			}
+        component: App
   },  
   
   
@@ -71,7 +71,20 @@ const routes = [
 		name: 'EditPurchasedetail',
 		path: '/edit/:id',
 		component: EditPurchasedetail
-   }
+   },
+   
+    {
+		name: 'CreatePurchase',
+		path: '/CreatePurchase',
+        component: CreatePurchase
+  },
+  
+  {
+		name: 'Purchases',
+		path: '/Purchases',
+        component: Purchases
+  },
+   
    
    
 ];
@@ -83,9 +96,7 @@ new Vue(Vue.util.extend({ router }, App)).$mount('#app'); */
 const router = new VueRouter({ routes });
 
 const app = new Vue({
-  components: { CreateItem, DisplayPurchasedetail },
-  
-  router
+	router
 }).$mount('#app');
 
 

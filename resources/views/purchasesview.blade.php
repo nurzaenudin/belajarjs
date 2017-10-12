@@ -8,22 +8,24 @@
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div id="app">
+		
+		<div id="app">
 			<transition>
-				<router-view></router-view>
-				<router-view name="CreateItem"></router-view>
+				<router-view name="Purchases"></router-view>
 			</transition>
 			
 			
 
         </div>
-         <script>
-           window.Laravel = <?php echo json_encode([
-               'csrfToken' => csrf_token(),
-                    ]); ?>
+		
+		
+        <script>
+			window.Laravel = <?php echo json_encode([
+				'csrfToken' => csrf_token(),
+                ]); 
+				?>
 					
-			
-          </script>
+		</script>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
 </html>

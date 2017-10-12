@@ -9,12 +9,12 @@
     </head>
     <body>
 		<p>
-		udin latihan crud laravel
-		<div id="app">
 		
-					<transition>
-            <router-view></router-view>
-				</transition>
+		<div id="app">
+			<router-link :to="{ name: 'DisplayItem' }" class="btn btn-primary">Display Item</router-link>
+			<transition name="fade">
+                <router-view></router-view>
+            </transition>
         </div>
 
 
