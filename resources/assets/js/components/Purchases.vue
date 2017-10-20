@@ -1,19 +1,53 @@
 <template>
 		<div>
-			<CreatePurchase></CreatePurchase>
-			<DisplayPurchasedetail></DisplayPurchasedetail>
+			<div>
+				ini adalah Purchase
+			</div>
+			
+			<div id="app2">
+				<router-link :to="{ name: 'DisplayPurchasedetail' }" class="btn btn-primary">Display Purchase Detail</router-link>
+				<transition name="fade">
+					<router-view></router-view>
+				</transition>
+			</div>
+		
 		</div>
+
+
 </template>
 <script>
-	import CreatePurchase from './CreatePurchase.vue';
+	import Vue from 'vue';
+	
+	import VueRouter from 'vue-router';
+	Vue.use(VueRouter);
+	
 	import DisplayPurchasedetail from './DisplayPurchasedetail.vue';
-
-	export default{
-		components:{
-			'CreatePurchase':CreatePurchase,
-			'DisplayPurchasedetail':DisplayPurchasedetail
+	
+	const routes = [
+		{
+			name: 'DisplayPurchasedetail',
+			path: '/',
+			component: DisplayPurchasedetail
 		}
+	]
+	
+	export default{
+		data(){
+			return{
+				purchase:{},
+				purchasedetail:{},
+				items:{}
+				}
+		}
+		
+
 
 	}
+	
+	const router = new VueRouter({ routes });
+
+	const app = new Vue({
+		router
+	}).$mount('#app2');
 
 </script>

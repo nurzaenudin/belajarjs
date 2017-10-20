@@ -64,7 +64,7 @@ const routes = [
 	},
   {
 		name: 'DisplayPurchasedetail',
-		path: '/purchasedetailsview',
+		path: '/Purchase/Details',
         component: DisplayPurchasedetail
   },
   {
@@ -83,7 +83,7 @@ const routes = [
 		name: 'Purchases',
 		path: '/Purchases',
         component: Purchases
-  },
+  }
    
    
    

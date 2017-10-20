@@ -1,6 +1,6 @@
 <template>
     <div>
-		UDIN
+		UDIN {{purchase.name}}
         <h1>Purchasedetails</h1>
 		  <div class="row">
           <div class="col-md-10"></div>
@@ -40,13 +40,15 @@
     export default {
         data(){
             return{
-                purchasedetails: []
+                purchase:{},
+				purchasedetails: []
             }
         },
 
         created: function()
         {
-            this.fetchPurchasedetails();
+			console.log(777)
+			this.fetchPurchasedetails();
         },
 
         methods: {

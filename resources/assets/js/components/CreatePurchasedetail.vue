@@ -1,5 +1,6 @@
 <template>
   <div>
+	
     <h1>Create An Purchasedetail</h1>
     <form v-on:submit.prevent="addPurchasedetail">
       <div class="row">
@@ -32,8 +33,8 @@
   export default {
     data(){
         return{
-          purchasedetail:{},
-		  items:{}
+			purchasedetail:{},
+			items:{}
         }
     },
 	
