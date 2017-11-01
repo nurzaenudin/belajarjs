@@ -40,7 +40,7 @@ class PurchasesController extends Controller
 			'name'=>$request->get('name'),
 		]);
 		$purchase->save();
-		return response()->json('Successfully added');
+		return response()->json($purchase);
     }
 
     /**

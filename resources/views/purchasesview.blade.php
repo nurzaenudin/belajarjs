@@ -11,7 +11,7 @@
 		
 		<div id="app">
 			<transition>
-				<router-view name="Purchases"></router-view>
+				<router-view></router-view>
 			</transition>
 			
 			

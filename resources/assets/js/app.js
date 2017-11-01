@@ -62,11 +62,7 @@ const routes = [
 		path: '/purchasedetails/create',
 		component: CreatePurchasedetail
 	},
-  {
-		name: 'DisplayPurchasedetail',
-		path: '/Purchase/Details',
-        component: DisplayPurchasedetail
-  },
+
   {
 		name: 'EditPurchasedetail',
 		path: '/edit/:id',
@@ -82,7 +78,15 @@ const routes = [
   {
 		name: 'Purchases',
 		path: '/Purchases',
-        component: Purchases
+        component: Purchases,
+		children:
+		[
+			{
+			name: 'DisplayPurchasedetail',
+			path: '/Purchase/Details',
+			component: DisplayPurchasedetail
+			}
+		]
   }
    
    

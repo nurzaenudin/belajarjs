@@ -13966,45 +13966,46 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vue_
 
 
 var routes = [{
-      name: '/',
-      path: '/',
-      component: __WEBPACK_IMPORTED_MODULE_4__App_vue___default.a
+	name: '/',
+	path: '/',
+	component: __WEBPACK_IMPORTED_MODULE_4__App_vue___default.a
 }, {
-      name: 'Example',
-      path: '/example',
-      component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
+	name: 'Example',
+	path: '/example',
+	component: __WEBPACK_IMPORTED_MODULE_5__components_Example_vue___default.a
 }, {
-      name: 'CreateItem',
-      path: '/items/create',
-      component: __WEBPACK_IMPORTED_MODULE_7__components_CreateItem_vue___default.a
+	name: 'CreateItem',
+	path: '/items/create',
+	component: __WEBPACK_IMPORTED_MODULE_7__components_CreateItem_vue___default.a
 }, {
-      name: 'DisplayItem',
-      path: '/DisplayItem',
-      component: __WEBPACK_IMPORTED_MODULE_8__components_DisplayItem_vue___default.a
+	name: 'DisplayItem',
+	path: '/DisplayItem',
+	component: __WEBPACK_IMPORTED_MODULE_8__components_DisplayItem_vue___default.a
 }, {
-      name: 'EditItem',
-      path: '/edit/:id',
-      component: __WEBPACK_IMPORTED_MODULE_9__components_EditItem_vue___default.a
+	name: 'EditItem',
+	path: '/edit/:id',
+	component: __WEBPACK_IMPORTED_MODULE_9__components_EditItem_vue___default.a
 }, {
-      name: 'CreatePurchasedetail',
-      path: '/purchasedetails/create',
-      component: __WEBPACK_IMPORTED_MODULE_10__components_CreatePurchasedetail_vue___default.a
+	name: 'CreatePurchasedetail',
+	path: '/purchasedetails/create',
+	component: __WEBPACK_IMPORTED_MODULE_10__components_CreatePurchasedetail_vue___default.a
 }, {
-      name: 'DisplayPurchasedetail',
-      path: '/Purchase/Details',
-      component: __WEBPACK_IMPORTED_MODULE_11__components_DisplayPurchasedetail_vue___default.a
+	name: 'EditPurchasedetail',
+	path: '/edit/:id',
+	component: __WEBPACK_IMPORTED_MODULE_12__components_EditPurchasedetail_vue___default.a
 }, {
-      name: 'EditPurchasedetail',
-      path: '/edit/:id',
-      component: __WEBPACK_IMPORTED_MODULE_12__components_EditPurchasedetail_vue___default.a
+	name: 'CreatePurchase',
+	path: '/CreatePurchase',
+	component: __WEBPACK_IMPORTED_MODULE_13__components_CreatePurchase_vue___default.a
 }, {
-      name: 'CreatePurchase',
-      path: '/CreatePurchase',
-      component: __WEBPACK_IMPORTED_MODULE_13__components_CreatePurchase_vue___default.a
-}, {
-      name: 'Purchases',
-      path: '/Purchases',
-      component: __WEBPACK_IMPORTED_MODULE_14__components_Purchases_vue___default.a
+	name: 'Purchases',
+	path: '/Purchases',
+	component: __WEBPACK_IMPORTED_MODULE_14__components_Purchases_vue___default.a,
+	children: [{
+		name: 'DisplayPurchasedetail',
+		path: '/Purchase/Details',
+		component: __WEBPACK_IMPORTED_MODULE_11__components_DisplayPurchasedetail_vue___default.a
+	}]
 }];
 
 /* const router = new VueRouter({ mode: 'history', routes: routes});
@@ -14013,7 +14014,7 @@ new Vue(Vue.util.extend({ router }, App)).$mount('#app'); */
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ routes: routes });
 
 var app = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
-      router: router
+	router: router
 }).$mount('#app');
 
 /***/ }),
@@ -17173,6 +17174,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -17185,6 +17201,7 @@ var routes = [{
 	name: 'DisplayPurchasedetail',
 	path: '/',
 	component: __WEBPACK_IMPORTED_MODULE_2__DisplayPurchasedetail_vue___default.a
+
 }];
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -17194,6 +17211,22 @@ var routes = [{
 			purchasedetail: {},
 			items: {}
 		};
+	},
+
+
+	methods: {
+		saveTheThing: function saveTheThing() {
+			console.log(123456);
+		}
+	},
+
+	beforeRouteUpdate: function beforeRouteUpdate(DisplayPurchasedetail, Purchase, next) {
+		this.axios.post("/purchases", this.purchase).then(function (response) {
+			console.log('sukses');
+			console.log(response.data);
+		});
+		console.log(66666);
+		next();
 	}
 });
 
@@ -17212,7 +17245,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [_vm._v("\n\t\tini adalah Purchase\n\t")]),
+    _c("div", [
+      _vm._v("\n\t\tini adalah Purchase\n\t\t\n\t\t"),
+      _c("form", [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c("label", [_vm._v("Purchase Name:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.purchase.name,
+                    expression: "purchase.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.purchase.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.purchase.name = $event.target.value
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -17224,7 +17290,7 @@ var render = function() {
             staticClass: "btn btn-primary",
             attrs: { to: { name: "DisplayPurchasedetail" } }
           },
-          [_vm._v("Display Purchase Detail")]
+          [_vm._v("Tambah")]
         ),
         _vm._v(" "),
         _c("transition", { attrs: { name: "fade" } }, [_c("router-view")], 1)
